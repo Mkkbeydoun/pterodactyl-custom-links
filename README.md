@@ -1,0 +1,53 @@
+# Custom Links
+
+Add your own buttons and links to server pages and the dashboard: wikis, Discord, map viewers, store pages. Show them on every server or only on chosen eggs.
+
+## Features
+
+- **Three places to show links**: a button row above the server console, extra tabs in the server's menu, and a button row above the server list on the dashboard.
+- **Per-egg targeting**: show a link on every server, or only on servers using chosen eggs (a map viewer for Rust, a mod list for Minecraft).
+- **Placeholders** filled in for each server: `{server.name}`, `{server.ip}`, `{server.port}`, `{server.uuid}`, `{server.identifier}` and `{user.username}`. Values are URL-encoded, so a server name can't change where a link goes.
+- **Safe links only**: http, https and `steam://` (for one-click joins like `steam://connect/{server.ip}:{server.port}`). Anything else is rejected when saving and again after placeholders are filled in.
+- **Any icon** from the panel's icon set, an order number, and a choice of opening in a new tab.
+- **Admin page** at **Admin → Custom Links**.
+
+## API
+
+| Method | Path | Who |
+|---|---|---|
+| GET | `/api/client/extensions/custom-links/links` | Any signed-in user (dashboard links) |
+| GET | `/api/client/servers/{server}/extensions/custom-links/links` | Anyone who can see the server |
+| GET, POST | `/api/admin/extensions/custom-links/links` | Root admins |
+| PATCH, DELETE | `/api/admin/extensions/custom-links/links/{id}` | Root admins |
+
+## Requirements
+
+- Pterodactyl Panel 2.0 (2.0-develop or later)
+- PHP 8.3+
+
+## Install
+
+From a release archive (`custom-links-1.0.0.pteroext`):
+
+```sh
+php artisan p:extension:install /path/to/custom-links-1.0.0.pteroext --enable
+```
+
+Or upload the archive under **Admin → Extensions**. Reload the panel afterwards.
+
+## Build from source
+
+```sh
+npm install
+npm run typecheck
+npm test
+npm run build
+php artisan p:extension:doctor /path/to/custom-links
+php artisan p:extension:pack /path/to/custom-links
+```
+
+## Uninstall
+
+```sh
+php artisan p:extension:remove custom-links
+```

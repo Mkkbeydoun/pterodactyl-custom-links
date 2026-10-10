@@ -1,0 +1,11 @@
+{
+    "description": "Add your own buttons and links to server pages and the dashboard: wikis, Discord, map viewers, store pages. Show them on every server or only on chosen eggs.",
+    "autoload": {
+        "psr-4": {
+            "RustixDev\\CustomLinks\\": "src/"
+        }
+    },
+    "config": {
+        "autoloader-suffix": "CustomLinksExtension"
+    }
+}

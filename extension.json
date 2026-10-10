@@ -1,0 +1,31 @@
+{
+    "$schema": "./node_modules/@pterodactyl/sdk/manifest.schema.json",
+    "id": "custom-links",
+    "name": "Custom Links",
+    "version": "1.0.0",
+    "description": "Add your own buttons and links to server pages and the dashboard: wikis, Discord, map viewers, store pages. Show them on every server or only on chosen eggs.",
+    "author": "RustixDev",
+    "icon": "link",
+    "requires": {
+        "panel": "^2.0.0-dev",
+        "sdk": ">=2.0.0-beta.4 <3.0",
+        "php": "^8.3"
+    },
+    "provider": "RustixDev\\CustomLinks\\CustomLinksProvider",
+    "ui": {
+        "entry": "dist/client.js",
+        "mode": "native",
+        "prefix": "rxcl",
+        "screens": [
+            {
+                "id": "manage",
+                "area": "admin",
+                "path": "custom-links",
+                "nav": {
+                    "label": "Custom Links",
+                    "icon": "link"
+                }
+            }
+        ]
+    }
+}
