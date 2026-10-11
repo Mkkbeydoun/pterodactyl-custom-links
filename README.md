@@ -27,13 +27,15 @@ Add your own buttons and links to server pages and the dashboard: wikis, Discord
 
 ## Install
 
-From a release archive (`custom-links-1.0.0.pteroext`):
+1. Download `custom-links-<version>.pteroext` from the [latest release](https://github.com/Mkkbeydoun/pterodactyl-custom-links/releases/latest).
+2. In the panel, open **Admin → Extensions**, upload the file and enable it.
+3. Reload the panel.
+
+From a terminal instead:
 
 ```sh
-php artisan p:extension:install /path/to/custom-links-1.0.0.pteroext --enable
+php artisan p:extension:install /path/to/custom-links-<version>.pteroext --enable
 ```
-
-Or upload the archive under **Admin → Extensions**. Reload the panel afterwards.
 
 ## Build from source
 
@@ -48,6 +50,14 @@ php artisan p:extension:pack /path/to/custom-links
 
 ## Uninstall
 
+Remove it under **Admin → Extensions**, or from a terminal:
+
 ```sh
 php artisan p:extension:remove custom-links
 ```
+
+## License
+
+MIT. See [LICENSE](LICENSE).
+
+This is a community extension and is not affiliated with or endorsed by Pterodactyl.
