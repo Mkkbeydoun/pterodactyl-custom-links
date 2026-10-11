@@ -27,7 +27,7 @@ Add your own buttons and links to server pages and the dashboard: wikis, Discord
 
 ## Install
 
-1. Download `custom-links-<version>.pteroext` from the [latest release](https://github.com/Mkkbeydoun/pterodactyl-custom-links/releases/latest).
+1. Download `custom-links-<version>.pteroext` from the [latest release](https://github.com/Rustix-Development/pterodactyl-custom-links/releases/latest).
 2. In the panel, open **Admin → Extensions**, upload the file and enable it.
 3. Reload the panel.
 
