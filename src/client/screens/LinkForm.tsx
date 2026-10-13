@@ -26,7 +26,7 @@ export const ICONS = [
     'users',
 ];
 
-const PLACEHOLDERS = ['{server.name}', '{server.ip}', '{server.port}', '{server.uuid}', '{server.identifier}', '{user.username}'];
+const PLACEHOLDERS = ['{server.name}', '{server.domain}', '{server.ip}', '{server.port}', '{server.uuid}', '{server.identifier}', '{user.username}'];
 
 interface Props {
     initial: AdminLink | null;
@@ -96,7 +96,8 @@ export default function LinkForm({ initial, pending, onCancel, onSubmit }: Props
                     onChange={(e) => setUrl(e.target.value)}
                 />
                 <p className='rxcl:mt-1 rxcl:text-xs rxcl:text-muted-foreground'>
-                    http, https or steam links. Placeholders: {PLACEHOLDERS.join(', ')}.
+                    http, https or steam links. Placeholders: {PLACEHOLDERS.join(', ')}. {'{server.domain}'} is the
+                    server's domain from the Domains extension, or its IP when it has none.
                 </p>
             </div>
             <div className='rxcl:grid rxcl:gap-4 rxcl:sm:grid-cols-[1fr_8rem]'>

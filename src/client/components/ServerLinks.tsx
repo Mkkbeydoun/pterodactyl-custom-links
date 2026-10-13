@@ -13,7 +13,7 @@ const useServerLinks = (server: Server) => {
 export function ConsoleLinks({ data: server }: { data: Server }) {
     const links = useServerLinks(server).filter((link) => link.placement === 'console');
 
-    return <LinkRow links={links} className='rxcl:mb-4' />;
+    return <LinkRow links={links} className='rxcl:mt-0 rxcl:mb-3' />;
 }
 
 /** Extra entries in the server's tab bar, after the core tabs. */
