@@ -6,7 +6,8 @@ Add your own buttons and links to server pages and the dashboard: wikis, Discord
 
 - **Three places to show links**: a button row above the server console, extra tabs in the server's menu, and a button row above the server list on the dashboard.
 - **Per-egg targeting**: show a link on every server, or only on servers using chosen eggs (a map viewer for Rust, a mod list for Minecraft).
-- **Placeholders** filled in for each server: `{server.name}`, `{server.ip}`, `{server.port}`, `{server.uuid}`, `{server.identifier}` and `{user.username}`. Values are URL-encoded, so a server name can't change where a link goes.
+- **Placeholders** filled in for each server: `{server.name}`, `{server.domain}`, `{server.ip}`, `{server.port}`, `{server.uuid}`, `{server.identifier}` and `{user.username}`. Values are URL-encoded, so a server name can't change where a link goes.
+- **`{server.domain}`** is the server's domain from the [Domains](https://github.com/Rustix-Development/pterodactyl-domains) extension, such as `play.example.com`. When the server has no working domain, or Domains is not installed, it is the same as `{server.ip}`.
 - **Safe links only**: http, https and `steam://` (for one-click joins like `steam://connect/{server.ip}:{server.port}`). Anything else is rejected when saving and again after placeholders are filled in.
 - **Any icon** from the panel's icon set, an order number, and a choice of opening in a new tab.
 - **Admin page** at **Admin → Custom Links**.

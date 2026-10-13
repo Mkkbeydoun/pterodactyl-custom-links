@@ -27,13 +27,33 @@ const link = (overrides: Partial<ClientLink> = {}): ClientLink => ({
     ...overrides,
 });
 
-test('links open in a new tab safely when asked to', async () => {
-    render(<LinkRow links={[link(), link({ id: 2, label: 'Wiki', new_tab: false })]} />, { wrapper: host.Wrapper });
+test('links are real links styled as secondary buttons and open in a new tab safely when asked to', async () => {
+    render(<LinkRow links={[link(), link({ id: 2, label: 'Wiki', url: 'https://wiki.example.com', new_tab: false })]} />, {
+        wrapper: host.Wrapper,
+    });
 
     const map = (await screen.findByText('Live map')).closest('a')!;
+    expect(map.getAttribute('href')).toBe('https://map.example.com/?ip=1.2.3.4');
     expect(map.getAttribute('target')).toBe('_blank');
     expect(map.getAttribute('rel')).toBe('noopener noreferrer');
-    expect(screen.getByText('Wiki').closest('a')!.getAttribute('target')).toBeNull();
+    expect(map.className.split(' ')).toEqual(expect.arrayContaining(['rxcl:bg-transparent', 'rxcl:border', 'rxcl:px-4', 'rxcl:py-2', 'rxcl:uppercase']));
+    expect(map.className).not.toContain('rxcl:bg-primary ');
+    const wiki = screen.getByText('Wiki').closest('a')!;
+    expect(wiki.getAttribute('href')).toBe('https://wiki.example.com');
+    expect(wiki.getAttribute('target')).toBeNull();
+    expect(document.querySelector('nav button')).toBeNull();
+});
+
+test('the console row has 12px below it and no top margin', async () => {
+    host.queryClient.setQueryData(serverLinksQuery(server.attributes.uuid).queryKey, [
+        link({ url: 'https://map.example.com/?host=play.example.com' }),
+    ]);
+    render(<ConsoleLinks data={server} />, { wrapper: host.Wrapper });
+
+    const row = (await screen.findByText('Live map')).closest('nav')!;
+    expect(row.className).toContain('rxcl:mb-3');
+    expect(row.className).toContain('rxcl:mt-0');
+    expect(row.querySelector('a')!.getAttribute('href')).toBe('https://map.example.com/?host=play.example.com');
 });
 
 test('an empty list renders nothing', async () => {

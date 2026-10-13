@@ -2,7 +2,7 @@
     "$schema": "./node_modules/@pterodactyl/sdk/manifest.schema.json",
     "id": "custom-links",
     "name": "Custom Links",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "description": "Add your own buttons and links to server pages and the dashboard: wikis, Discord, map viewers, store pages. Show them on every server or only on chosen eggs.",
     "author": "RustixDev",
     "icon": "link",

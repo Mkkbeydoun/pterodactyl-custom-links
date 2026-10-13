@@ -5,6 +5,7 @@ namespace RustixDev\CustomLinks\Models;
 use Illuminate\Database\Eloquent\Model;
 use Pterodactyl\Models\Server;
 use Pterodactyl\Models\User;
+use RustixDev\CustomLinks\Support\ServerDomain;
 
 /**
  * @property int $id
@@ -59,11 +60,13 @@ class CustomLink extends Model
 
         if ($server !== null) {
             $allocation = $server->allocation;
+            $ip = $allocation ? ($allocation->ip_alias ?: $allocation->ip) : '';
             $values += [
                 '{server.name}' => $server->name,
                 '{server.uuid}' => $server->uuid,
                 '{server.identifier}' => config('pterodactyl.features.new_server_identifiers') ? $server->identifier : $server->uuidShort,
-                '{server.ip}' => $allocation ? ($allocation->ip_alias ?: $allocation->ip) : '',
+                '{server.domain}' => $allocation ? (ServerDomain::forAllocation($server, $allocation) ?? $ip) : '',
+                '{server.ip}' => $ip,
                 '{server.port}' => $allocation ? (string) $allocation->port : '',
             ];
         }
