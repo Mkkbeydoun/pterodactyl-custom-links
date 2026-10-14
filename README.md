@@ -23,7 +23,7 @@ Add your own buttons and links to server pages and the dashboard: wikis, Discord
 
 ## Requirements
 
-- Pterodactyl Panel 2.0 (2.0-develop or later)
+- Pterodactyl Panel v2.0.0-beta.1 or later
 - PHP 8.3+
 
 ## Install

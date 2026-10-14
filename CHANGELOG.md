@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.2.0
+
+- Works with Pterodactyl v2.0.0-beta.1 (SDK beta.6).
+
 ## 1.1.0
 
 - New `{server.domain}` placeholder: the server's domain from the Domains extension, or its IP when it has no working domain (or Domains is not installed).
